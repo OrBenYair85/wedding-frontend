@@ -50,7 +50,7 @@ export default function CameraScreen() {
       <Webcam
         ref={webcamRef}
         audio={false}
-        mirrored={false}
+        mirrored={facingMode === 'user'}
         playsInline
         muted
         screenshotFormat="image/jpeg"

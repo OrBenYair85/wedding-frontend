@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 60" preserveAspectRatio="xMinYMid meet" style="width: 100%; max-width: 300px; height: auto;">
+  <style>
+    .rings { fill: none; stroke: #EDE0D4; stroke-width: 3; }
+    .sparkle { stroke: #EDE0D4; stroke-width: 2; fill: none; }
+    .text { fill: #EDE0D4; font-family: 'Georgia', serif; font-size: 24px; dominant-baseline: middle; }
+  </style>
+
+  <!-- Wedding Rings Icon -->
+  <g transform="translate(10,10)">
+    <circle class="rings" cx="20" cy="20" r="10"/>
+    <circle class="rings" cx="30" cy="20" r="10"/>
+    <path class="sparkle" d="M17 13 L23 7 L28 12"/>
+  </g>
+
+  <!-- Title Text -->
+  <text x="70" y="30" class="text">Our Wedding</text>
+</svg>

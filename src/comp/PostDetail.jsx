@@ -1,18 +1,28 @@
 import { useParams, useNavigate } from 'react-router-dom';
-import { getAllPosts } from '../services/postService';
+import { deletePost } from '../services/api';
 import '../App.css';
 
 export default function PostDetail({ posts }) {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  // Try from props, fallback to localStorage
-  const allPosts = posts.length > 0 ? posts : getAllPosts();
-  const post = allPosts.find((p) => p._id === id);
+  const post = posts.find((p) => p._id === id);
 
   if (!post) {
     return <div style={{ padding: '1rem' }}>לא נמצא פוסט</div>;
   }
+
+  const handleDelete = async () => {
+    if (window.confirm('האם אתה בטוח שברצונך למחוק את הפוסט?')) {
+      try {
+        await deletePost(id);
+        navigate('/');
+      } catch (err) {
+        alert('שגיאה במחיקה');
+        console.error(err);
+      }
+    }
+  };
 
   return (
     <div className="detail-page">
@@ -30,6 +40,21 @@ export default function PostDetail({ posts }) {
 
       <h2>{post.header}</h2>
       {post.content && <p>{post.content}</p>}
+
+      <button
+        onClick={handleDelete}
+        style={{
+          marginTop: '1rem',
+          padding: '0.75rem 1rem',
+          background: '#e53935',
+          color: 'white',
+          border: 'none',
+          borderRadius: '8px',
+          cursor: 'pointer',
+        }}
+      >
+        מחק פוסט
+      </button>
     </div>
   );
 }

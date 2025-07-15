@@ -2,7 +2,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { deletePost } from '../services/api';
 import '../App.css';
 
-export default function PostDetail({ posts }) {
+export default function PostDetail({ posts, onDeletePost }) {
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -16,6 +16,7 @@ export default function PostDetail({ posts }) {
     if (window.confirm('האם אתה בטוח שברצונך למחוק את הפוסט?')) {
       try {
         await deletePost(id);
+        onDeletePost(id); // ✅ Remove from state in App.jsx
         navigate('/');
       } catch (err) {
         alert('שגיאה במחיקה');

@@ -11,3 +11,8 @@ export const createPost = async (postData) => {
   const res = await axios.post(`${BASE_URL}/posts`, postData);
   return res.data;
 };
+
+export const deletePost = async (id) => {
+  const res = await axios.delete(`${BASE_URL}/posts/${id}`);
+  return res.data;
+};
